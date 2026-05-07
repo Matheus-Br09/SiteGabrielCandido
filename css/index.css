@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&display=swap');
+
+header h1{
+    text-align: center;
+    font-family: "Mozilla Text", sans-serif;
+    font-weight: 1000;
+}
+
+
+dialog {
+    border: none;
+    border-radius: 8px;
+    padding: 40px;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-100%, -110%);
+    z-index: 1000;
+
+    transition: 0.5s ease-in;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: 0.5s ease-out;
+}
+
+dialog h1{
+    padding: 10px;
+    margin-bottom: 40px;
+
+    text-align: center;
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+footer .btn-img img{
+    width: 70px;
+}
+
+footer .btn-img{
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline: none;
+
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.categoria{
+    display: flex;
+    flex-direction: column;
+}
+
+.transicao_abrir_modal{
+    transition: 0.5s ease-in; 
+}
+
+.transicao_fechar_modal{
+    transition: 0.5s ease-out;
+}
