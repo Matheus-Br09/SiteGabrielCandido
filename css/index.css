@@ -23,23 +23,23 @@ header h1{
 }
 
 .conteiner{
+    position: fixed;
+
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
     display: flex;
+    justify-content: center;
+
     width: 1050px;
     height: 520px;
 
-    justify-content: center;
-
-    margin-top: 55px;
-
-    padding-top: 1%;
-
     background-color: #ece8e1;
 
-    border-radius: 35px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
+    border-radius: 35px 35px 0 0;
 
-    box-shadow: 0  10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3)
 }
 
 
