@@ -11,3 +11,36 @@ fechar.addEventListener('click', () => {
     modal.style.transition = "0.3s ease"
     modal.close();
 })
+
+function add_tarefa(){
+    const tarefa = document.getElementById('task').value.trim();
+    const radioSelecionado = document.querySelector('input[name="categoria"]:checked').value;
+
+    fetch('./database/add_tarefa.php', {
+        method: "POST",
+        headers: {'Content-type': "application/x-www-form-urlencoded"},
+        body: `task=${encodeURIComponent(tarefa)}&categoria=${encodeURIComponent(radioSelecionado)}`
+    })
+}
+
+function buscarTarefa(){
+    fetch("./database/mostrar_tarefas.php")
+    .then(response => response.json())
+    .then(dados => {
+        console.log(dados)
+        const cards = document.getElementById("cards")
+
+        cards.innerHTML = ""
+
+        dados.forEach(item => {
+            cards.innerHTML += `<div id="card">
+                <h3>ID: ${item.id_task}</h3>
+                <h3>Tarefa: ${item.task}</h3>
+                <h3>Categoria: ${item.urgency_level}</h3>
+            </div>`
+        });
+    })
+    .catch(error => {console.error("Erro: ", error)})
+}
+
+buscarTarefa()
