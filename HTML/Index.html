@@ -5,22 +5,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/index.css">
     <title>Lista de Tarefas</title>
+    
+    <style>
+        .pesquisa{
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
 
+    <main
+
     <main id="tasks">
-        <div class="conteiner"> 
-            <h1>Lista de Tarefas</h1>
-        </div> 
+
+        <div class="conteiner">
+
+            <div class="topo">
+                <h1>Lista de Tarefas</h1>
+                <p>Organize sua rotina e ideias de forma eficiente.</p>
+            </div>
+
+            <div class="search-area">
+                <input 
+                    type="text" 
+                    class="search-box" 
+                    placeholder="Pesquisar tarefa..."
+                >
+            </div>
+
+           
+            <div class="tarefas">
+
+            </div>
+
+        </div>
+
     </main>
 
-
-    
-
-
     <footer>
-        <button class="btn-img" id="abrirModal" onclick=""><img src="../img/botao_Add.png" alt="botão de adicionar tarefa"></button>
+        <button class="btn-img" id="abrirModal" onclick="">+</button>
     </footer>
+   
     <dialog id="modal">
         <button id="fecharModal">X</button>
 
@@ -28,7 +57,7 @@
 
         <div class="tarefa">
            <label for="">Tarefa: </label>
-            <input type="text" name="texto-tarefa" id="tarefa"> 
+            <input type="text" class="pesquisa" name="texto-tarefa" id="tarefa"> 
         </div>
         <div class="categoria">
             <label for="category">Categoria: </label>
@@ -42,6 +71,8 @@
             <div>
                 <input type="radio" name="categoria" id="anyMoment" value="Qualquer momento"> Qualquer momento
             </div>
+
+            <button onclick="add_tarefa()" id=>Adicionar Tarefa</button>
         </div>
 
     </dialog>

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&family=Noto+Sans+Display:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mozilla+Text:wght@200..700&family=Noto+Sans+Display:wght@100..900&display=swap');
 
 *{
     margin: 0;
@@ -7,97 +7,245 @@
 }
 
 body{
-    background-color: #977c44;
-}
-
-
-header h1{
-    text-align: center;
-    font-family: "Mozilla Text", sans-serif;
-
-}
-
-#tasks{
-    margin-left: 15%;
-    align-items: center;
-}
-
-.conteiner{
-    position: fixed;
-
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    min-height: 100vh;
 
     display: flex;
     justify-content: center;
+    align-items: center;
 
-    width: 1050px;
-    height: 520px;
+    background: linear-gradient(
+        135deg,
+        #0f172a,
+        #111827,
+        #1e293b
+    );
 
-    background-color: #ece8e1;
+    font-family: "Noto Sans Display", sans-serif;
+    color: white;
 
-    border-radius: 35px 35px 0 0;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3)
+    overflow-x: hidden;
 }
 
 
 
-dialog {
-    border: none;
-    border-radius: 8px;
+.conteiner{
+    width: 1000px;
+    min-height: 650px;
+
     padding: 40px;
-    width: 300px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
+    background: rgba(255,255,255,0.08);
+
+    border: 1px solid rgba(255,255,255,0.1);
+
+    backdrop-filter: blur(14px);
+
+    border-radius: 30px;
+
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+}
+
+/* TOPO */
+
+.topo{
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.topo h1{
+    font-size: 50px;
+    font-weight: 700;
+
+    margin-bottom: 10px;
+
+    letter-spacing: 1px;
+}
+
+.topo p{
+    color: #cbd5e1;
+    font-size: 17px;
+}
+
+/* PESQUISA */
+
+.search-area{
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 35px;
+}
+
+.search-box{
+    width: 500px;
+    height: 55px;
+
+    border: none;
+    outline: none;
+
+    border-radius: 50px;
+
+    padding: 0 25px;
+
+    background: rgba(255,255,255,0.08);
+
+    color: white;
+
+    font-size: 16px;
+
+    transition: 0.3s;
+}
+
+.search-box::placeholder{
+    color: #cbd5e1;
+}
+
+.search-box:focus{
+    background: rgba(255,255,255,0.12);
+
+    box-shadow: 0 0 15px rgba(255,255,255,0.08);
+}
+
+/* ÁREA DAS TAREFAS */
+
+.tarefas{
+    width: 100%;
+    min-height: 350px;
+
+    border-radius: 25px;
+
+    background: rgba(255,255,255,0.03);
+
+    border: 1px dashed rgba(255,255,255,0.1);
+
+    padding: 25px;
+}
+
+/* BOTÃO */
+
+.btn-add:hover{
     position: fixed;
+
+    right: 35px;
+    bottom: 35px;
+
+    width: 70px;
+    height: 70px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: linear-gradient(
+        135deg,
+        #6366f1,
+        #8b5cf6
+    );
+
+    color: white;
+
+    font-size: 42px;
+
+    cursor: pointer;
+
+    box-shadow: 0 10px 25px rgba(99,102,241,0.4);
+
+    transition: 0.3s;
+    transform: rotate(180deg);
+}
+
+.btn-add:hover{
+    transform: scale(1.1);
+}
+
+dialog{
+    width: 500px;
+
+    padding: 35px;
+
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 28px;
+
+    background: rgba(15, 23, 42, 0.95);
+
+    backdrop-filter: blur(15px);
+
+    color: white;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+
+    position: fixed;
+
     top: 50%;
     left: 50%;
-    transform: translate(-100%, -110%);
-    z-index: 1000;
 
-    transition: 0.5s ease-in;
+    transform: translate(-50%, -50%);
+
+    overflow: hidden;
 }
 
-dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: 0.5s ease-out;
-}
-
-dialog h1{
-    padding: 10px;
-    margin-bottom: 40px;
-
-    text-align: center;
-    border-radius: 10px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
-}
-
-footer .btn-img img{
-    width: 70px;
-}
-
-footer .btn-img{
-    border: none;
-    background: transparent;
-    padding: 0;
-    cursor: pointer;
-    outline: none;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-}
-
-.categoria{
+.adicionar-tarefa{
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    margin-top: 25px;
 }
 
-.transicao_abrir_modal{
-    transition: 0.5s ease-in; 
+dialog::backdrop{
+    background: rgba(0, 0, 0, 0.39);
+    backdrop-filter: blur(4px);
 }
 
-.transicao_fechar_modal{
-    transition: 0.5s ease-out;
+#fecharModal{
+    position: absolute;
+
+    top: 18px;
+    right: 18px;
+
+    width: 38px;
+    height: 38px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.08);
+
+    color: white;
+
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+#fecharModal:hover{
+    background: #ef4444;
+
+    transform: rotate(180deg);
+}
+
+
+/* RESPONSIVO */
+
+@media(max-width: 1100px){
+
+    .conteiner{
+        width: 92%;
+    }
+
+}
+
+@media(max-width: 700px){
+
+    .conteiner{
+        padding: 25px;
+    }
+
+    .topo h1{
+        font-size: 35px;
+    }
+
+    .search-box{
+        width: 100%;
+    }
+
 }
