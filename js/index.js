@@ -30,8 +30,8 @@ function buscarTarefa(){
         console.log(dados)
         const cards = document.getElementById("cards")
 
-        cards.innerHTML = ""
-
+        cards.innerHTML = "";
+        
         dados.forEach(item => {
             cards.innerHTML += `<div id="card">
                 <h3>ID: ${item.id_task}</h3>

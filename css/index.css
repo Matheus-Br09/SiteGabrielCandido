@@ -122,7 +122,7 @@ body{
 
 /* BOTÃO */
 
-.btn-add:hover{
+.btn-add{
     position: fixed;
 
     right: 35px;
@@ -151,9 +151,10 @@ body{
     transition: 0.3s;
     transform: rotate(180deg);
 }
-
 .btn-add:hover{
-    transform: scale(1.1);
+    box-shadow: 0 15px 40px rgba(99,102,241,0.6);
+
+    transform: rotate(360deg);
 }
 
 dialog{
