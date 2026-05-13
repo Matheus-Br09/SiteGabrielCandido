@@ -29,15 +29,20 @@ function buscarTarefa(){
     .then(dados => {
         console.log(dados)
         const cards = document.getElementById("cards")
+        const button = document.createElement("button")
 
         cards.innerHTML = "";
-        
+
         dados.forEach(item => {
             cards.innerHTML += `<div id="card">
                 <h3>ID: ${item.id_task}</h3>
                 <h3>Tarefa: ${item.task}</h3>
                 <h3>Categoria: ${item.urgency_level}</h3>
-            </div>`
+                <button onclick="">Excluir</button>
+                <button onclick>Editar Tarefa</button>
+            </div>
+            `
+            
         });
     })
     .catch(error => {console.error("Erro: ", error)})
