@@ -30,9 +30,12 @@
                 <input 
                     type="text" 
                     class="search-box" 
-                    placeholder="Pesquisar tarefa...">
+                    placeholder="Pesquisar tarefa..."
+                >
             </div>
-            <div class="tarefas" id="cards">
+
+           
+            <div class="tarefas">
 
             </div>
 
@@ -41,7 +44,7 @@
     </main>
 
     <footer>
-        <button class="btn-add" id="abrirModal" onclick="">+</button>
+        <button class="btn-img" id="abrirModal" onclick="">+</button>
     </footer>
    
     <dialog id="modal">
@@ -51,21 +54,19 @@
 
         <div class="tarefa">
            <label for="">Tarefa: </label>
-            <textarea type="text" class="pesquisa" name="texto-tarefa" id="tarefa" required> 
-            </textarea>
+            <input type="text" class="pesquisa" name="texto-tarefa" id="tarefa"> 
         </div>
-
         <div class="categoria">
             <label for="category">Categoria: </label>
             <div>
-                <input type="radio" name="categoria" id="urgente" value="Urgente" required>
+                <input type="radio" name="categoria" id="urgente" value="Urgente">
                 Urgente
             </div>
             <div>
-                <input type="radio" name="categoria" id="normal" value="Normal" required> Normal
+                <input type="radio" name="categoria" id="normal" value="Normal"> Normal
             </div>
             <div>
-                <input type="radio" name="categoria" id="anyMoment" value="Qualquer momento" required> Qualquer momento
+                <input type="radio" name="categoria" id="anyMoment" value="Qualquer momento"> Qualquer momento
             </div>
 
             <button onclick="add_tarefa()" id=>Adicionar Tarefa</button>
