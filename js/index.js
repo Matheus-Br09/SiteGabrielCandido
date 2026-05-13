@@ -21,6 +21,10 @@ function add_tarefa(){
         headers: {'Content-type': "application/x-www-form-urlencoded"},
         body: `task=${encodeURIComponent(tarefa)}&categoria=${encodeURIComponent(radioSelecionado)}`
     })
+    .then(response => response.text())
+    .catch(error => console.log('Erro: ', error))
+
+    location.reload();
 }
 
 function buscarTarefa(){
@@ -38,14 +42,29 @@ function buscarTarefa(){
                 <h3>ID: ${item.id_task}</h3>
                 <h3>Tarefa: ${item.task}</h3>
                 <h3>Categoria: ${item.urgency_level}</h3>
-                <button onclick="">Excluir</button>
-                <button onclick>Editar Tarefa</button>
+                <button id="exclude" onclick="excluir_tarefa(${item.id_task})"> &#x1F5D1 Excluir Tarefa</button>
+                <button onclick="">Editar Tarefa</button>
             </div>
             `
             
         });
     })
     .catch(error => {console.error("Erro: ", error)})
+}
+
+function excluir_tarefa(id){
+    if (!confirm("Tem certeza que quer excluir? ")) return;
+
+    fetch("./database/excluir_tarefa.php",{
+        method: "POST",
+        headers: {"Content-Type": "application/x-www-form-urlencoded"},
+        body: `id=${id}`
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data)
+        location.reload()
+    })
 }
 
 buscarTarefa()
