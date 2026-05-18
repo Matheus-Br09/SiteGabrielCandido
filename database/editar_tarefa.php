@@ -1,21 +1,22 @@
-<?php 
-    include_once __DIR__ . "/config.php";
+<?php
+include_once __DIR__ . "/config.php";
 
-    $id = $_POST["id_task"];
-    $task = $_POST["task"];
-    $urgency_level = $_POST["urgency_level"];
-    
+    if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+        $id = $_POST["id_task"];
+        $task = $_POST["task"];
+        $urgency_level = $_POST["urgency_level"];
 
-    $sql = $connection->prepare("UPDATE task SET task = ?, urgency_level = ? WHERE id_task = ?");
-    $sql->bind_param("ssi", $task, $urgency_level, $id);
+        $sql = $connection->prepare("UPDATE task SET task = ?, urgency_level = ? WHERE id_task = ?");
+        $sql->bind_param("ssi", $task, $urgency_level, $id);
 
-    if ($sql->execute()){
-        echo "Alterado com sucesso";
-    } else {
-        $sql->error;
+        if ($sql->execute()) {
+            echo "Alterado com sucesso";
+        } else {
+            $sql->error;
+        }
+
+        
     }
 
     $sql->close();
-
-
 ?>

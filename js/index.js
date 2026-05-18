@@ -28,6 +28,7 @@ function add_tarefa(){
 }
 
 function editar_tarefa(id, tarefa_atual, urgency_atual){
+        
         const nova_tarefa = prompt("Nova tarefa: ", tarefa_atual);
 
         const nova_urgency = prompt("Nova Categoria (Urgente, Normal, Qualquer momento): ", urgency_atual);
@@ -35,18 +36,13 @@ function editar_tarefa(id, tarefa_atual, urgency_atual){
         fetch("./database/editar_tarefa.php", {
             method: "POST",
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-            body: `
-
-            id_task=${id}
-            &task=${encodeURIComponent(tarefa_atual)}
-            &urgency_level=${encodeURIComponent(urgency_atual)}
-
+            body: `id_task=${id}&task=${encodeURIComponent(nova_tarefa)}&urgency_level=${encodeURIComponent(nova_urgency)}
             `
         })
         .then(response => response.text())
         .then(data => {
             console.log(data);
-
+            location.reload();
         })
     }
 
