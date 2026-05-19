@@ -1,97 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/index.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
     <title>Lista de Tarefas</title>
-
+    
     <style>
-      .pesquisa {
-        width: 100%;
-        padding: 10px;
-        border: none;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
+        .pesquisa{
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <main id="tasks">
-      <div class="conteiner">
-        <div class="topo">
-          <h1>Lista de Tarefas</h1>
-          <p>Organize sua rotina e ideias de forma eficiente.</p>
+
+        <div class="conteiner">
+
+            <div class="topo">
+                <h1>Lista de Tarefas</h1>
+                <p>Organize sua rotina e ideias de forma eficiente.</p>
+            </div>
+
+            <div class="search-area">
+                <input 
+                    type="text" 
+                    class="search-box" 
+                    placeholder="Pesquisar tarefa...">
+            </div>
+            <div class="tarefas" id="cards">
+
+            </div>
+
         </div>
 
-        <div class="search-area">
-          <input
-            type="text"
-            class="search-box"
-            placeholder="Pesquisar tarefa..."
-          />
-        </div>
-        <div class="tarefas" id="cards"></div>
-      </div>
     </main>
 
     <footer>
-      <button class="btn-add" id="abrirModal" onclick="">+</button>
+        <button class="btn-add" id="abrirModal" onclick="">+</button>
     </footer>
-
+   
     <dialog id="modal">
-      <button id="fecharModal">X</button>
+        <button id="fecharModal">X</button>
 
-      <h1>Adicionar Tarefa</h1>
+        <h1>Adicionar Tarefa</h1>
 
-      <div class="tarefa">
-        <label for="">Tarefa: </label>
-        <textarea
-          type="text"
-          class="pesquisa"
-          name="task"
-          id="task"
-          required
-        ></textarea>
-      </div>
-
-      <div class="categoria">
-        <label for="category">Categoria: </label>
-        <div>
-          <input
-            type="radio"
-            name="categoria"
-            id="categoria"
-            value="Urgente"
-            required
-          />
-          Urgente
-        </div>
-        <div>
-          <input
-            type="radio"
-            name="categoria"
-            id="categoria"
-            value="Normal"
-            required
-          />
-          Normal
-        </div>
-        <div>
-          <input
-            type="radio"
-            name="categoria"
-            id="categoria"
-            value="Qualquer momento"
-            required
-          />
-          Qualquer momento
+        <div class="tarefa">
+           <label for="">Tarefa: </label>
+            <input type="text" class="pesquisa" name="task" id="task" required> 
         </div>
 
-        <button onclick="add_tarefa()" id="">Adicionar Tarefa</button>
-      </div>
+        <div class="categoria">
+            <label for="category">Categoria: </label>
+            <div>
+                <input type="radio" name="categoria" id="categoria" value="Urgente" required>
+                Urgente
+            </div>
+            <div>
+                <input type="radio" name="categoria" id="categoria" value="Normal" required> Normal
+            </div>
+            <div>
+                <input type="radio" name="categoria" id="categoria" value="Qualquer momento" required> Qualquer momento
+            </div>
+
+            <button onclick="add_tarefa()" id="add_tarefa">Adicionar Tarefa</button>
+        </div>
+
     </dialog>
 
-    <script src="./js/index.js"></script>
-  </body>
+    <dialog id="editarModal">
+        <button id="fecharEditarModal">X</button>
+
+        <h1>Editar Tarefa</h1>
+
+        <div class="tarefa">
+           <label for="edit_tarefa">Tarefa: </label>
+            <input type="text" class="pesquisa" name="edit_task" id="edit_task" required> 
+        </div>
+
+        <div class="categoria">
+            <label for="category">Categoria: </label>
+            <div>
+                <input type="radio" name="edit_categoria" id="edit_categoria" value="Urgente" required>
+                Urgente
+            </div>
+            <div>
+                <input type="radio" name="edit_categoria" id="edit_categoria" value="Normal" required> Normal
+            </div>
+            <div>
+                <input type="radio" name="edit_categoria" id="edit_categoria" value="Qualquer momento" required> Qualquer momento
+            </div>
+
+            <button onclick="editar_tarefa()" id="add_tarefa">Editar Tarefa</button>
+        </div>
+
+    </dialog>
+
+    <script src="./js/index.js" defer></script>
+</body>
 </html>
