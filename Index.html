@@ -67,11 +67,39 @@
                 <input type="radio" name="categoria" id="categoria" value="Qualquer momento" required> Qualquer momento
             </div>
 
-            <button onclick="add_tarefa()" id=>Adicionar Tarefa</button>
+            <button onclick="add_tarefa()" id="add_tarefa">Adicionar Tarefa</button>
         </div>
 
     </dialog>
 
-    <script src="./js/index.js"></script>
+    <dialog id="editarModal">
+        <button id="fecharEditarModal">X</button>
+
+        <h1>Editar Tarefa</h1>
+
+        <div class="tarefa">
+           <label for="edit_tarefa">Tarefa: </label>
+            <input type="text" class="pesquisa" name="edit_task" id="edit_task" required> 
+        </div>
+
+        <div class="categoria">
+            <label for="category">Categoria: </label>
+            <div>
+                <input type="radio" name="edit_categoria" id="edit_categoria" value="Urgente" required>
+                Urgente
+            </div>
+            <div>
+                <input type="radio" name="edit_categoria" id="edit_categoria" value="Normal" required> Normal
+            </div>
+            <div>
+                <input type="radio" name="edit_categoria" id="edit_categoria" value="Qualquer momento" required> Qualquer momento
+            </div>
+
+            <button onclick="editar_tarefa()" id="add_tarefa">Editar Tarefa</button>
+        </div>
+
+    </dialog>
+
+    <script src="./js/index.js" defer></script>
 </body>
 </html>

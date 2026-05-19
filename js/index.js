@@ -12,6 +12,26 @@ fechar.addEventListener('click', () => {
     modal.close();
 })
 
+let idAtual = null;
+
+function abrirEditarModal(id, tarefa_atual, urgency_atual){
+
+    idAtual = id;
+
+    document.getElementById("edit_task").value = tarefa_atual;
+    
+    const radios = document.querySelectorAll('input[name="edit_categoria"]')
+
+    radios.forEach(radio => {
+
+        radio.checked = 
+            radio.value === urgency_atual
+
+    })
+
+    editarModal.showModal();
+}
+
 function add_tarefa(){
     const tarefa = document.getElementById('task').value.trim();
     const radioSelecionado = document.querySelector('input[name="categoria"]:checked').value;
@@ -27,16 +47,21 @@ function add_tarefa(){
     location.reload();
 }
 
-function editar_tarefa(id, tarefa_atual, urgency_atual){
+function editar_tarefa(){
         
-        const nova_tarefa = prompt("Nova tarefa: ", tarefa_atual);
+        const nova_tarefa = document.getElementById("edit_task").value.trim()
 
-        const nova_urgency = prompt("Nova Categoria (Urgente, Normal, Qualquer momento): ", urgency_atual);
+        const nova_urgency = document.querySelector('input[name="edit_categoria"]:checked').value
+
+        if (!nova_urgency){
+            alert("Selecione uma categoria");
+            return;
+        }
 
         fetch("./database/editar_tarefa.php", {
             method: "POST",
             headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-            body: `id_task=${id}&task=${encodeURIComponent(nova_tarefa)}&urgency_level=${encodeURIComponent(nova_urgency)}
+            body: `id_task=${idAtual}&task=${encodeURIComponent(nova_tarefa)}&urgency_level=${encodeURIComponent(nova_urgency)}
             `
         })
         .then(response => response.text())
@@ -58,6 +83,7 @@ function buscarTarefa(){
         cards.innerHTML = "";
 
         dados.forEach(item => {
+
             cards.innerHTML += `<div id="card">
         
             <h3>Tarefa: ${item.task}</h3> 
@@ -79,7 +105,9 @@ function buscarTarefa(){
 
             </button>
 
-            <button onclick='editar_tarefa(${item.id_task}, ${JSON.stringify(item.task)}, ${JSON.stringify(item.urgency_level)})'>
+            <button onclick='abrirEditarModal(${item.id_task},
+            ${JSON.stringify(item.task)},
+            ${JSON.stringify(item.urgency_level)})'>
 
                 Editar Tarefa
 
@@ -94,6 +122,18 @@ function buscarTarefa(){
 
     
 }
+
+const editarModal = document.getElementById("editarModal");
+const abrirEditModal = document.getElementById("abrirEditarModal");
+const fecharEditarModal = document.getElementById("fecharEditarModal");
+
+
+
+
+fecharEditarModal.addEventListener('click', () => {
+    editarModal.style.transition = "0.3 ease";
+    editarModal.close();
+})
 
 function excluir_tarefa(id){
     if (!confirm("Tem certeza que quer excluir? ")) return;
