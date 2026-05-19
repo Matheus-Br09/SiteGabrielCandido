@@ -76,7 +76,6 @@ function buscarTarefa(){
     fetch("./database/mostrar_tarefas.php")
     .then(response => response.json())
     .then(dados => {
-        console.log(dados)
         const cards = document.getElementById("cards")
         const button = document.createElement("button")
 
@@ -145,7 +144,6 @@ function excluir_tarefa(id){
     })
     .then(response => response.text())
     .then(data => {
-        console.log(data)
         location.reload()
     })
 }
