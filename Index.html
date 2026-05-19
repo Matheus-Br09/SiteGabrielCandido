@@ -70,8 +70,17 @@
             <button onclick="add_tarefa()" id="add_tarefa">Adicionar Tarefa</button>
         </div>
 
+<<<<<<< HEAD
+=======
+        <button onclick="add_tarefa()" id="add_tarefa">Adicionar Tarefa</button>
+      </div>
+>>>>>>> 52c856f2abee8d4bc781e1e91c99f204d498e63c
     </dialog>
+    
+    <dialog id="editarModal">
+      <button id="fecharEditarModal">X</button>
 
+<<<<<<< HEAD
     <dialog id="editarModal">
         <button id="fecharEditarModal">X</button>
 
@@ -103,3 +112,59 @@
     <script src="./js/index.js" defer></script>
 </body>
 </html>
+=======
+      <h1>Editar Tarefa</h1>
+
+      <div class="tarefa">
+        <label for="edit_tarefa">Tarefa: </label>
+        <textarea
+          type="text"
+          class="pesquisa"
+          name="edit_task"
+          id="edit_task"
+          required
+        ></textarea>
+      </div>
+
+      <div class="categoria">
+        <label for="category">Categoria: </label>
+        <div>
+          <input
+            type="radio"
+            name="edit_categoria"
+            id="edit_categoria"
+            value="Urgente"
+            required
+          />
+          Urgente
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="edit_categoria"
+            id="edit_categoria"
+            value="Normal"
+            required
+          />
+          Normal
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="edit_categoria"
+            id="edit_categoria"
+            value="Qualquer momento"
+            required
+          />
+          Qualquer momento
+        </div>
+
+        <button onclick="editar_tarefa()" id="editar_tarefa">
+          Editar Tarefa
+        </button>
+      </div>
+    </dialog>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
+>>>>>>> 52c856f2abee8d4bc781e1e91c99f204d498e63c
