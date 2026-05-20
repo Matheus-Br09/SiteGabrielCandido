@@ -27,6 +27,7 @@ body{
 }
 
 
+
 .conteiner{
     width: 1000px;
     min-height: 650px;
@@ -66,6 +67,13 @@ body{
 }
 
 /* PESQUISA */
+.pesquisa{
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
 
 .search-area{
     display: flex;
@@ -140,21 +148,39 @@ body{
     transition: 0.1s;
 }
 
+.tarefa-display{
+    overflow-wrap: break-word;
+    word-break: break-word;
+    padding-top: 40px;
+    font-size: 25px;
+}
+
+#category{
+    font-size: 16px;
+}
+
 
 
 #cards{
+    table-layout: fixed;
     display: grid;
+    word-wrap: break-all;
+
     grid-template-columns: repeat(2, 0.5fr);
 }
 
 #cards #card{
+    word-wrap: break-all;
+
     position: relative;
-    font-weight: 300;
+    font-weight: 200;
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
-    padding: 25px;
+    padding: 45px;
+
+    
 }
 
 #card button{
@@ -208,15 +234,15 @@ body{
 
     position: absolute;
 
-    top: 40%;
+    top: 30%;
 
     right: 2%;
 
-    background-color: #232A39;
+    background-color: #41464eab;
 
     border-radius: 10px;
 
-    border: 0.5px solid #111827;
+    border: 0.5px solid #687080;
 
     box-shadow: 0 0 10px rgba(255,255,255,0.1);
 

@@ -5,16 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/index.css">
     <title>Lista de Tarefas</title>
-    
-    <style>
-        .pesquisa{
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-    </style>
 </head>
 <body>
     <main id="tasks">
@@ -25,13 +15,26 @@
                 <h1>Lista de Tarefas</h1>
                 <p>Organize sua rotina e ideias de forma eficiente.</p>
             </div>
-
+            
+            
             <div class="search-area">
-                <input 
-                    type="text" 
-                    class="search-box" 
-                    placeholder="Pesquisar tarefa...">
+                <form id="form">
+                    <div>
+                      <input 
+                        type="text" 
+                        id="pesquisa_tarefa"
+                        class="search-box" 
+                        placeholder="Pesquisar tarefa...">  
+                    </div>
+                    
+                    
+                    <div id="resultados">
+
+                    </div>
+                </form>
             </div>
+            
+
             <div class="tarefas" id="cards">
 
             </div>
@@ -51,7 +54,7 @@
 
         <div class="tarefa">
            <label for="">Tarefa: </label>
-            <input type="text" class="pesquisa" name="task" id="task" required> 
+            <input type="text" class="pesquisa" name="task" id="task" maxlength="80" required> 
         </div>
 
         <div class="categoria">
@@ -61,7 +64,7 @@
                 Urgente
             </div>
             <div>
-                <input type="radio" name="categoria" id="categoria" value="Normal" required> Normal
+                <input type="radio" name="categoria" id="categoria" value="Requer Atenção" required> Requer Atenção
             </div>
             <div>
                 <input type="radio" name="categoria" id="categoria" value="Qualquer momento" required> Qualquer momento
@@ -79,7 +82,7 @@
 
         <div class="tarefa">
            <label for="edit_tarefa">Tarefa: </label>
-            <input type="text" class="pesquisa" name="edit_task" id="edit_task" required> 
+            <input type="text" class="pesquisa" name="edit_task" id="edit_task" maxlength="80" required> 
         </div>
 
         <div class="categoria">
@@ -89,7 +92,7 @@
                 Urgente
             </div>
             <div>
-                <input type="radio" name="edit_categoria" id="edit_categoria" value="Normal" required> Normal
+                <input type="radio" name="edit_categoria" id="edit_categoria" value="Requer Atenção" required> Requer Atenção
             </div>
             <div>
                 <input type="radio" name="edit_categoria" id="edit_categoria" value="Qualquer momento" required> Qualquer momento

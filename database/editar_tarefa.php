@@ -15,8 +15,7 @@ include_once __DIR__ . "/config.php";
             $sql->error;
         }
 
-        
+        $sql->close();
     }
-
-    $sql->close();
+    
 ?>

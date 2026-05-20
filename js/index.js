@@ -155,7 +155,7 @@ function buscarTarefa(){
                 </button>
             </div>
 
-                <h3>Tarefa: ${item.task}</h3> 
+                <h3 class="tarefa-display">${item.task}</h3> 
 
                 <br>
 
@@ -173,6 +173,31 @@ function buscarTarefa(){
     .catch(error => {console.error("Erro: ", error)})
 
     
+}
+
+const form = document.getElementById("form")
+
+form.addEventListener("keyup", (event) => {
+    event.preventDefault();
+
+    pesquisar_tarefas();
+})
+
+function pesquisar_tarefas(){
+    let texto_pesquisado = document.getElementById("pesquisa_tarefa").value.trim().toLowerCase();
+
+    let cards = document.querySelectorAll("#card")
+
+    cards.forEach(item => {
+        let titulo = item.querySelector("h3").innerHTML.toLowerCase();
+
+        if (titulo.startsWith(texto_pesquisado)){
+            item.style.display = "block"
+        } else {
+            item.style.display = "none";
+        }
+    })
+
 }
 
 const editarModal = document.getElementById("editarModal");
