@@ -148,11 +148,13 @@ body{
 }
 
 #cards #card{
+    position: relative;
     font-weight: 300;
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
+    padding: 25px;
 }
 
 #card button{
@@ -178,6 +180,66 @@ body{
     background-image: linear-gradient(to right,  #ef4444, #fe895e, #ef4444);
     transition: 0.2s;
     box-shadow: 2px 2px 2px rgba(252, 35, 35, 0.416);
+}
+
+.menu-btn{
+
+    position: absolute;
+
+    border: none;
+
+    top: 10px;
+
+    right: 10px;
+
+    background: transparent;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+}
+
+
+/* MENU ESCONDIDO */
+.menu-opcoes{
+
+    display: none;
+
+    position: absolute;
+
+    top: 40%;
+
+    right: 2%;
+
+    background-color: #232A39;
+
+    border-radius: 10px;
+
+    border: 0.5px solid #111827;
+
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+
+    padding: 10px;
+
+    flex-direction: column;
+
+    gap: 10px;
+
+    z-index: 100;
+
+}
+
+.menu-opcoes button{
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    padding: 5px;
+
 }
 
 /* BOTÃO */

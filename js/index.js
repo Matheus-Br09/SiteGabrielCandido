@@ -71,6 +71,53 @@ function editar_tarefa(){
         })
     }
 
+document.addEventListener("click", function(event){
+    const menus =
+        document.querySelectorAll(".menu-opcoes");
+
+    const botoes =
+        document.querySelectorAll(".menu-btn");
+
+    let clicouNoBotao = false;
+
+    botoes.forEach(botao => {
+
+        if (botao.contains(event.target)){
+
+            clicouNoBotao = true;
+
+        }
+
+    });
+
+    if (!clicouNoBotao){
+
+        menus.forEach(menu => {
+
+            menu.style.display = "none";
+
+        });
+
+    }
+
+});
+
+function toggleMenu(botao){
+    const menu = botao.nextElementSibling;
+
+    document.querySelectorAll(".menu-opcoes").forEach(item => {
+        if (item !== menu){
+            item.style.display = "none";
+        }
+    })
+
+    if (menu.style.display === "flex"){
+        menu.style.display = "none";
+    } else {
+        menu.style.display = "flex"
+    }
+}
+
 
 function buscarTarefa(){
     fetch("./database/mostrar_tarefas.php")
@@ -84,34 +131,40 @@ function buscarTarefa(){
         dados.forEach(item => {
 
             cards.innerHTML += `<div id="card">
-        
-            <h3>Tarefa: ${item.task}</h3> 
 
-            <br>
-
-            <h3 id="category">
-                ${item.urgency_level}
-            </h3>
-
-            <br>
-
-            <button 
-                id="exclude"
-                onclick="excluir_tarefa(${item.id_task})"
-            >
-
-                &#x1F5D1 Excluir Tarefa
-
+            <button class="menu-btn" onclick="toggleMenu(this)">
+                ⋮
             </button>
 
-            <button onclick='abrirEditarModal(${item.id_task},
-            ${JSON.stringify(item.task)},
-            ${JSON.stringify(item.urgency_level)})'>
+            <div class="menu-opcoes">
+                <button 
+                    id="exclude"
+                    onclick="excluir_tarefa(${item.id_task})"
+                >
 
-                Editar Tarefa
+                    &#x1F5D1 Excluir Tarefa
 
-            </button>
+                </button>
 
+                <button onclick='abrirEditarModal(${item.id_task},
+                ${JSON.stringify(item.task)},
+                ${JSON.stringify(item.urgency_level)})'>
+
+                    Editar Tarefa
+
+                </button>
+            </div>
+
+                <h3>Tarefa: ${item.task}</h3> 
+
+                <br>
+
+                <h3 id="category">
+                   Categoria: ${item.urgency_level}
+                </h3>
+
+                <br>
+            
         </div>
             `
             
@@ -125,9 +178,6 @@ function buscarTarefa(){
 const editarModal = document.getElementById("editarModal");
 const abrirEditModal = document.getElementById("abrirEditarModal");
 const fecharEditarModal = document.getElementById("fecharEditarModal");
-
-
-
 
 fecharEditarModal.addEventListener('click', () => {
     editarModal.style.transition = "0.3 ease";
