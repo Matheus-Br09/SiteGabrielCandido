@@ -14,17 +14,17 @@ fechar.addEventListener('click', () => {
 
 let idAtual = null;
 
-function abrirEditarModal(id, tarefa_atual, urgency_atual){
+function abrirEditarModal(id, tarefa_atual, urgency_atual) {
 
     idAtual = id;
 
     document.getElementById("edit_task").value = tarefa_atual;
-    
+
     const radios = document.querySelectorAll('input[name="edit_categoria"]')
 
     radios.forEach(radio => {
 
-        radio.checked = 
+        radio.checked =
             radio.value === urgency_atual
 
     })
@@ -32,46 +32,46 @@ function abrirEditarModal(id, tarefa_atual, urgency_atual){
     editarModal.showModal();
 }
 
-function add_tarefa(){
+function add_tarefa() {
     const tarefa = document.getElementById('task').value.trim();
     const radioSelecionado = document.querySelector('input[name="categoria"]:checked').value;
 
     fetch('./database/add_tarefa.php', {
         method: "POST",
-        headers: {'Content-type': "application/x-www-form-urlencoded"},
+        headers: { 'Content-type': "application/x-www-form-urlencoded" },
         body: `task=${encodeURIComponent(tarefa)}&categoria=${encodeURIComponent(radioSelecionado)}`
     })
-    .then(response => response.text())
-    .catch(error => console.log('Erro: ', error))
+        .then(response => response.text())
+        .catch(error => console.log('Erro: ', error))
 
     location.reload();
 }
 
-function editar_tarefa(){
-        
-        const nova_tarefa = document.getElementById("edit_task").value.trim()
+function editar_tarefa() {
 
-        const nova_urgency = document.querySelector('input[name="edit_categoria"]:checked').value
+    const nova_tarefa = document.getElementById("edit_task").value.trim()
 
-        if (!nova_urgency){
-            alert("Selecione uma categoria");
-            return;
-        }
+    const nova_urgency = document.querySelector('input[name="edit_categoria"]:checked').value
 
-        fetch("./database/editar_tarefa.php", {
-            method: "POST",
-            headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-            body: `id_task=${idAtual}&task=${encodeURIComponent(nova_tarefa)}&urgency_level=${encodeURIComponent(nova_urgency)}
+    if (!nova_urgency) {
+        alert("Selecione uma categoria");
+        return;
+    }
+
+    fetch("./database/editar_tarefa.php", {
+        method: "POST",
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: `id_task=${idAtual}&task=${encodeURIComponent(nova_tarefa)}&urgency_level=${encodeURIComponent(nova_urgency)}
             `
-        })
+    })
         .then(response => response.text())
         .then(data => {
             console.log(data);
             location.reload();
         })
-    }
+}
 
-document.addEventListener("click", function(event){
+document.addEventListener("click", function (event) {
     const menus =
         document.querySelectorAll(".menu-opcoes");
 
@@ -82,7 +82,7 @@ document.addEventListener("click", function(event){
 
     botoes.forEach(botao => {
 
-        if (botao.contains(event.target)){
+        if (botao.contains(event.target)) {
 
             clicouNoBotao = true;
 
@@ -90,7 +90,7 @@ document.addEventListener("click", function(event){
 
     });
 
-    if (!clicouNoBotao){
+    if (!clicouNoBotao) {
 
         menus.forEach(menu => {
 
@@ -102,16 +102,16 @@ document.addEventListener("click", function(event){
 
 });
 
-function toggleMenu(botao){
+function toggleMenu(botao) {
     const menu = botao.nextElementSibling;
 
     document.querySelectorAll(".menu-opcoes").forEach(item => {
-        if (item !== menu){
+        if (item !== menu) {
             item.style.display = "none";
         }
     })
 
-    if (menu.style.display === "flex"){
+    if (menu.style.display === "flex") {
         menu.style.display = "none";
     } else {
         menu.style.display = "flex"
@@ -119,18 +119,18 @@ function toggleMenu(botao){
 }
 
 
-function buscarTarefa(){
+function buscarTarefa() {
     fetch("./database/mostrar_tarefas.php")
-    .then(response => response.json())
-    .then(dados => {
-        const cards = document.getElementById("cards")
-        const button = document.createElement("button")
+        .then(response => response.json())
+        .then(dados => {
+            const cards = document.getElementById("cards")
+            const button = document.createElement("button")
 
-        cards.innerHTML = "";
+            cards.innerHTML = "";
 
-        dados.forEach(item => {
+            dados.forEach(item => {
 
-            cards.innerHTML += `<div id="card">
+                cards.innerHTML += `<div id="card">
 
             <button class="menu-btn" onclick="toggleMenu(this)">
                 ⋮
@@ -167,23 +167,24 @@ function buscarTarefa(){
             
         </div>
             `
-            
-        });
-    })
-    .catch(error => {console.error("Erro: ", error)})
 
-    
+            });
+        })
+        .catch(error => { console.error("Erro: ", error) })
+
+
 }
 
 const form = document.getElementById("form")
 
 form.addEventListener("keyup", (event) => {
-    event.preventDefault();
+
 
     pesquisar_tarefas();
+    event.preventDefault();
 })
 
-function pesquisar_tarefas(){
+function pesquisar_tarefas() {
     let texto_pesquisado = document.getElementById("pesquisa_tarefa").value.trim().toLowerCase();
 
     let cards = document.querySelectorAll("#card")
@@ -191,7 +192,7 @@ function pesquisar_tarefas(){
     cards.forEach(item => {
         let titulo = item.querySelector("h3").innerHTML.toLowerCase();
 
-        if (titulo.startsWith(texto_pesquisado)){
+        if (titulo.startsWith(texto_pesquisado)) {
             item.style.display = "block"
         } else {
             item.style.display = "none";
@@ -209,18 +210,18 @@ fecharEditarModal.addEventListener('click', () => {
     editarModal.close();
 })
 
-function excluir_tarefa(id){
+function excluir_tarefa(id) {
     if (!confirm("Tem certeza que quer excluir? ")) return;
 
-    fetch("./database/excluir_tarefa.php",{
+    fetch("./database/excluir_tarefa.php", {
         method: "POST",
-        headers: {"Content-Type": "application/x-www-form-urlencoded"},
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: `id=${id}`
     })
-    .then(response => response.text())
-    .then(data => {
-        location.reload()
-    })
+        .then(response => response.text())
+        .then(data => {
+            location.reload()
+        })
 }
 
 buscarTarefa()
